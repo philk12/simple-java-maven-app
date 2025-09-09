@@ -1,5 +1,9 @@
 pipeline {
-   agent any
+    agent any
+    tools {
+        maven 'Maven3.9.11'   // must match the name in Manage Jenkins → Tools
+        // jdk 'JDK21'         // uncomment if you also defined a JDK tool and need it
+    }
     stages {
         stage('Build') {
             steps {
@@ -18,7 +22,7 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh './jenkins/scripts/deliver.sh' 
+                sh './jenkins/scripts/deliver.sh'
             }
         }
     }
